@@ -53,46 +53,61 @@ export default function Notes() {
 
   return (
     <>
-      <h1 className="text-info text-center m-5 ">Notes</h1>
-      <div className="container">
-        <div className="form-group mt-5">
-          <form onSubmit={(e) => addNote(e)}>
-            <div className="d-flex">
-              <input
-                type="text"
-                value={getNote}
-                className="form-control"
-                onChange={(e) => setgetNotes(e.target.value)}
-              />
-              <button type="submit" className="btn btn-outline-primary ml-2">
-                ADD
-              </button>
-            </div>
-          </form>
-          <div className="mt-3">
-            {notes.map((note, index) => (
-              <div key={index} className="mt-1 d-flex">
-                <span> {index + 1}</span>
-                <input
-                  type="text"
-                  value={note}
-                  disabled
-                  className="form-control"
-                />
-                <button
-                  onClick={() => editNote(note, index)}
-                  className="btn btn-outline-primary ml-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => Deletenote(index)}
-                  className="btn btn-outline-danger ml-2"
-                >
-                  Delete
-                </button>
+      <div>
+        <h1 className="text-info text-center p-3 mt-3">Notes</h1>
+        <div className="container">
+          <div className="form-group mt-5">
+            <form onSubmit={(e) => addNote(e)}>
+              <div className="card">
+                <h4>Add new Note</h4>
+                <div className="d-flex">
+                  <input
+                    type="text"
+                    value={getNote}
+                    className="form-control"
+                    onChange={(e) => setgetNotes(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className="btn btn-outline-primary ml-2"
+                  >
+                    ADD
+                  </button>
+                </div>
               </div>
-            ))}
+            </form>
+            <div className="card mt-5">
+              <h4>Notes</h4>
+              <table className="table table-hover mb-0">
+                {notes.map((note, index) => (
+                  <tbody key={index}>
+                    <tr>
+                      <td
+                        style={{ verticalAlign: "middle", textAlign: "center" }}
+                        width="50"
+                      >
+                        {index + 1}
+                      </td>
+                      <td style={{ wordBreak: "break-all" }}>{note}</td>
+                      <td width="169">
+                        <button
+                          onClick={() => editNote(note, index)}
+                          className="btn btn-sm btn-outline-primary ml-2"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => Deletenote(index)}
+                          className="btn btn-sm btn-outline-danger ml-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>{" "}
+                  </tbody>
+                ))}
+              </table>
+            </div>
           </div>
         </div>
       </div>

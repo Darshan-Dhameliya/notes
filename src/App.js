@@ -5,7 +5,9 @@ import Notes from "./notes";
 export default function App() {
   return (
     <>
-      <Notes />
+      <div>
+        <Notes />{" "}
+      </div>
     </>
   );
 }
